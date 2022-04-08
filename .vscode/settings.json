@@ -1,0 +1,95 @@
+{
+    "multiCommand.commands": [
+        {
+            "command": "multiCommand.LatexNormalBuild",
+            "sequence": [
+                "latex-workshop.wordcount",
+                "latex-workshop.build",
+            ]
+        },
+        {
+            "command": "multiCommand.LatexFullBuild",
+            "sequence": [
+                "latex-workshop.clean",
+                "latex-workshop.build",
+                "latex-workshop.wordcount",
+                "latex-workshop.log",
+                "latex-workshop.view",
+            ]
+        },
+    ],
+    "[tex]": {
+        "editor.tabSize": 2,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+    },
+    "[latex]": {
+        "editor.tabSize": 2,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+    },
+    "[bibtex]": {
+        "editor.tabSize": 2,
+    },
+    "latex-workshop.intellisense.package.enabled": true,
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.hover.preview.enabled": true,
+    "latex-workshop.hover.preview.cursor.enabled": true,
+    "latex-workshop.hover.citation.enabled": true,
+    "latex-workshop.hover.ref.enabled": true,
+    "latex-workshop.hover.ref.number.enabled": true,
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.latex.outDir": "%DIR%/out",
+    "latex-workshop.latex.autoClean.run": "onFailed",
+    "latex-workshop.latex.clean.subfolder.enabled": true,
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.bbl",
+        "*.blg",
+        "*.dvi",
+        "*.fls",
+        "*.fdb_latexmk",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.nav",
+        "*.out",
+        "*.snm",
+        "*.synctex(busy)",
+        "*.synctex.gz",
+        "*.synctex.gz(busy)",
+        "*.toc",
+        "*.vrb"
+    ],
+    // ////////////////////////////////////////////////////////////////////////////////////
+    "latex-workshop.latex.tools": [
+        {
+            "name": "lualatex",
+            "command": "lualatex",
+            "args": [
+                "-synctex=1",
+                "-file-line-error",
+                "-interaction=nonstopmode",
+                "-halt-on-error",
+                "-lualatex",
+                "--output-directory=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+    ],
+    // ///////////////////////////////////////////////////////////////////////////////////////////
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "lualatex",
+            "tools": [
+                "lualatex"
+            ]
+        },
+    ]
+}
