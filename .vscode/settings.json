@@ -31,6 +31,7 @@
     },
     "latex-workshop.intellisense.package.enabled": true,
     "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.synctex.afterBuild.enabled": true,
     "latex-workshop.hover.preview.enabled": true,
     "latex-workshop.hover.preview.cursor.enabled": true,
     "latex-workshop.hover.citation.enabled": true,
@@ -46,6 +47,7 @@
         "*.acr",
         "*.alg",
         "*.bbl",
+        "*.bcf",
         "*.blg",
         "*.dvi",
         "*.fls",
@@ -56,6 +58,7 @@
         "*.idx",
         "*.ind",
         "*.lof",
+        "*.log",
         "*.lot",
         "*.nav",
         "*.out",
@@ -70,26 +73,40 @@
     "latex-workshop.latex.tools": [
         {
             "name": "lualatex",
-            "command": "lualatex",
+            "command": "latexmk",
             "args": [
-                "-synctex=1",
-                "-file-line-error",
-                "-interaction=nonstopmode",
-                "-halt-on-error",
-                "-lualatex",
-                "--output-directory=%OUTDIR%",
+                "-e",
+                "$lualatex=q/lualatex %O -synctex=1 -interaction=nonstopmode -file-line-error %S/",
+                "-e",
+                "$bibtex=q/upbibtex %O %B/",
+                "-e",
+                "$biber=q/biber %O --bblencoding=utf8 -u -U --output_safechars %B/",
+                "-e",
+                "$makeindex=q/upmendex %O -o %D %S/",
+                "-e",
+                "$out_dir = out",
+                "-norc",
+                "-gg",
+                "-pdflua",
                 "%DOC%"
-            ],
-            "env": {}
+            ]
         },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOC%"
+            ]
+        }
     ],
     // ///////////////////////////////////////////////////////////////////////////////////////////
     "latex-workshop.latex.recipes": [
         {
             "name": "lualatex",
             "tools": [
-                "lualatex"
+                "lualatex",
+                // "bibtex",
             ]
         },
-    ]
+    ],
 }

@@ -1,3 +1,5 @@
 # LuaLaTeX report template repo
 
-ref: https://texwiki.texjp.org/
+## References
+- [TeX Wiki](https://texwiki.texjp.org/)
+- [CloudLaTeX / LaTeXNotation](https://cloudlatex.io/latex-notation)
